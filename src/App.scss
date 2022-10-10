@@ -1,0 +1,107 @@
+        $board-bg-color :blue;
+        $gap: 10px;
+        @import url('http://fonts.googleapis.com/css2@family=Source+Sans+Pro:wght@400;600');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Source Sans pro", sans-serif;
+            font-size: 14px;
+            line-height: 1.3em;
+        }
+        
+        .App-container {
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 40px 50px 1fr;
+            background-color: $board-bg-color;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            .navbar {
+                padding-left: $gap;
+                display: flex;
+                align-items: center;
+                &.app {
+                    background-color: aqua;
+                    font-size: 1.5rem;
+                }
+                &.board {
+                    background-color: $board-bg-color;
+                    font-size: 1.1rem;
+                }
+            }
+            .board-content {
+                display: flex;
+                margin: 0 $gap $gap;
+                overflow-x: auto;
+                &::-webkit-scrollbar {
+                    -webkit-appearance: none;
+                }
+                &::-webkit-scrollbar:horizontal {
+                    height: 11px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(255, 255, 255, .24);
+                    border-radius: 8px;
+                }
+                .column {
+                    flex: 0 0 auto;
+                    width: 300px;
+                    &:not(:first-child) {
+                        margin-left: $gap;
+                    }
+                    >* {
+                        background-color: #ebecf0;
+                        color: #333;
+                        padding: 0 8px;
+                    }
+                    header {
+                        padding-left: $gap;
+                        height: 36px;
+                        line-height: 36px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                    }
+                    footer {
+                        padding-left: 10px;
+                        height: 36px;
+                        line-height: 36px;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+                    ul {
+                        list-style-type: none;
+                        margin: 0;
+                        max-height: calc(100% - 36px - 36px);
+                        //lay tong 100% the bao ngoai tru di chieu cao cua phan header va footer al ra chieu cao phan than
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            -webkit-appearance: none;
+                        }
+                        &::-webkit-scrollbar:vertical {
+                            width: 11px;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            background-color: darken(#ebecf0, 15);
+                            border-right: 5px #ebecf0 solid;
+                        }
+                        li {
+                            background-color: antiquewhite;
+                            padding: 10px;
+                            border-radius: 2px;
+                            &:not(:last-child) {
+                                // thuoc tinh nay ko danh cho phan tu cuoi cung
+                                margin-bottom: 10px;
+                            }
+                            img {
+                                display: block;
+                                width: calc(100% + 2 * 10px);
+                                margin: -10px 0 10px -10px;
+                                border-top-left-radius: 5px;
+                                border-top-right-radius: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
